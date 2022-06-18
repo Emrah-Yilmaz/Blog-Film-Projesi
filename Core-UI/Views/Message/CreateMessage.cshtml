@@ -1,0 +1,48 @@
+﻿@model EntityLayer.Concrete.Message
+@{
+    ViewData["Title"] = "CreateMessage";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<h4 class="card-title">Yeni Mesaj Oluştur</h4>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            
+               <h5 class="alert-danger">@ViewBag.error </h5> 
+            
+
+            @using (Html.BeginForm("CreateMessage", "Message", FormMethod.Post, new { @class = "forms-sample" }))
+            {
+                <div class="form-group">
+
+                    @Html.Label("Alıcıya Ait Kullanıcı Adı")
+                    @Html.TextBoxFor(x=> x.ReceiverUsername, new{@class="form-control", @placeholder="Kullanıcı Adı"})
+                                @Html.ValidationMessageFor(x => x.ReceiverUsername, "", new{@class=" alert-danger"})
+
+                </div>
+                <div class="form-group">
+                    @Html.Label("Mesaj Başlığı")
+                    @Html.TextBoxFor(x=> x.Subject, new{@class="form-control",  @placeholder="Başlık"})
+                                @Html.ValidationMessageFor(x => x.Subject, "", new{@class=" alert-danger"})
+
+
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Mesajınız")
+                    @Html.TextAreaFor(x=>x.MessageDetails, new{@class="form-control", @rows=4, @placeholder="Mesajınız..."})
+                                @Html.ValidationMessageFor(x => x.MessageDetails, "", new{@class=" alert-danger"})
+
+                </div>
+                <button type="submit" class="btn btn-gradient-primary mr-2">Gönder</button>
+                <button class="btn btn-light">Temizle</button>
+
+            }
+
+
+        </div>
+    </div>
+</div>

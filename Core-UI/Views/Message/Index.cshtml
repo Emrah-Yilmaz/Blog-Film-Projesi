@@ -1,0 +1,87 @@
+﻿  @using EntityLayer.Concrete
+  @model List<Message>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Tüm Mesajlar </h4>
+             
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          
+                          <th> Kullanıcı Adı </th>
+                          <th> Konu </th>
+                          <th> Tarih </th>
+                          <th> Mesajı Göster </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          @foreach (var item in Model)
+                         {
+                            <tr>
+
+                            
+
+                              <td> @item.SenderUsername </td>
+                        
+                              <td> @item.Subject</td>
+
+                              <td> @item.MessageDate.ToShortDateString()</td>
+
+                              <td> <a href="/Message/Inbox/@item.MessageId" class="btn btn-info">Mesajı Göster </a> </td>
+
+                            </tr>
+                         }
+                      
+                      
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+@*
+
+<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 100%">
+    <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-5 fw-semibold">Gelen Kutusu </span>
+    </a>
+    @foreach (var item in Model)
+    {
+        <div class="list-group list-group-flush border-bottom scrollarea">
+
+            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                    <i class="mdi mdi-account"></i>
+                    <strong class="mb-1"> @item.SenderUsername</strong>
+                    <small class="text-muted">@item.MessageDate.ToShortDateString()</small>
+                </div>
+                <br>
+
+                <div class="col-10 mb-1 small">
+                    <strong class="mb-1">@item.Subject</strong>
+                    <br />
+                    @item.MessageDetails
+                </div>
+                <br>
+                <div class="d-flex w-100 align-items-center justify-end">
+                <a href=""  class="btn btn-success btn-fw">@item.MessageId</a>
+                </div>
+            </a>
+            <br>
+
+        </div>
+    }
+
+
+</div>
+*@

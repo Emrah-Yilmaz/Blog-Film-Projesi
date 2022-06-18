@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+	<!-- //header -->
+	<!-- main-slider -->
+	<br /><br />
+	@await Component.InvokeAsync("Slider")
+	<!-- //banner-slider-->
+	<!-- main-slider -->
+	<!--grids-sec1-->
+	@await Component.InvokeAsync("PopularMovies")
+	<!--//grids-sec1-->
+	<!--grids-sec2-->
+	@await Component.InvokeAsync("NewReleases")
+	<!--grids-sec2-->
+	<!--mid-slider -->
+	@await Component.InvokeAsync("Slider2")
+	<!-- //mid-slider-->
+	<!--/tabs-->
+	
+	<!-- //tabs-->
+	<!-- footer-66 -->
+
+	<!--//footer-66 -->

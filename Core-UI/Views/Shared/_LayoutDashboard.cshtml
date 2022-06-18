@@ -1,0 +1,198 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Purple Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/Theme/writer/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Theme/writer/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+
+
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/Theme/writer/assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="~/Theme/writer/assets/images/favicon.ico" />
+  </head>
+  <body>
+     
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo" href="../../index.html"><img src="~/Theme/writer/assets/images/logo.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="~/Theme/writer/assets/images/logo-mini.svg" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <div class="search-field d-none d-md-block">
+
+      
+           
+
+          </div>
+          <ul class="navbar-nav navbar-nav-right">
+
+
+              @await Component.InvokeAsync("DashboardUserInfo")
+           
+            <li class="nav-item d-none d-lg-block full-screen-link">
+              <a class="nav-link">
+                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+              </a>
+            </li>
+            
+            @await Component.InvokeAsync("DashboardMessage")
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                <i class="mdi mdi-bell-outline"></i>
+                <span class="count-symbol bg-danger"></span>
+              </a>
+             
+              @await Component.InvokeAsync("DashboardNotification")
+
+
+
+            </li>
+            <li class="nav-item nav-logout d-none d-lg-block">
+              <a asp-action="Logout" asp-controller="Account" asp-route-returnUrl="/Account/Login/">
+                <i class="mdi mdi-power"></i>
+            </a>
+            </li>
+          
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <br /><br /><br />
+            <ul class="nav">
+         
+            <li class="nav-item">
+              <a class="nav-link" href="/Dashboard/Index/">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
+        <span class="menu-title">Mesajlar</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-medical-bag menu-icon"></i>
+      </a>
+      <div class="collapse" id="general-pages">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/Message/Index/"> Gelen Kutusu   </a></li>
+      
+          <li class="nav-item"> <a class="nav-link" href="/Message/CreateMessage/">Yeni Mesaj Oluştur </a></li>
+            </ul>
+      </div>
+    </li>
+                <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-title">Blog</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/Blog/DashboardCreateBlog/">Yeni Blog Oluştur</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/Blog/DashboardMyBlog/">Bloglarım</a></li>
+        </ul>
+      </div>
+    </li>
+
+           
+
+            <li class="nav-item">
+              <a class="nav-link" href="/Notification/Index/">
+                <span class="menu-title">Bildirimler</span>
+                <i class="mdi mdi-table-large menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Account/UserEditProfile/">
+                <span class="menu-title">Kullanıcı Bilgilerim</span>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              </a>
+            </li>
+            
+         
+            <li class="nav-item sidebar-actions">
+            
+                <a href="/Home/Index/" class="btn btn-block btn-lg btn-gradient-primary mt-4">➨ Siteye Git</a>
+               
+             
+            </li>
+          </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+
+          <div class="content-wrapper">
+               @RenderBody()
+              <div class="page-header">
+             
+             
+            </div>
+          
+           
+            
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid clearfix">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+
+
+    
+<!-- JavaScript -->
+
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/Theme/writer/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+  
+    <script src="~/Theme/writer/assets/js/off-canvas.js"></script>
+    
+    <script src="~/Theme/writer/assets/js/hoverable-collapse.js"></script>
+    <script src="~/Theme/writer/assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- End custom js for this page -->
+  </body>
+</html>

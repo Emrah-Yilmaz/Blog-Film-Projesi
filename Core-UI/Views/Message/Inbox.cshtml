@@ -1,0 +1,38 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Message>
+
+@{
+    ViewData["Title"] = "Inbox";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <h1>@ViewBag.err</h1>
+        <form method="post">
+        @foreach (var item in Model)
+        {
+
+
+            <div class="card text-center">
+                <div class="card-header">
+                    @item.SenderUsername
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">@item.Subject</h5>
+                    <p class="card-text">@item.MessageDetails</p>
+
+                    <a href="/Message/ReplyMessage/@item.MessageId" class="btn btn-success">Cevapla</a>
+                    <button type="submit" class="btn btn-danger">Sil</button>
+                </div>
+                <div class="card-footer text-muted">
+                    @item.MessageDate.ToString()
+                </div>
+            </div>
+
+
+        }
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model EntityLayer.Concrete.Blog
+
+@{
+    ViewData["Title"] = "DashboardCreateBlog";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<h1>Blog Düzenleme Sayfası</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Basic form elements</h4>
+        <p class="card-description"> Basic form elements </p>
+
+        @using (Html.BeginForm("DashboardEditBlog", "Blog", FormMethod.Post))
+        {
+            @Html.Label("Blog ID")
+            @Html.TextBoxFor(x => x.BlogId, new {@class="form-control", @readonly="readonly"})
+
+            @Html.Label("Başlık")
+            @Html.TextBoxFor(x => x.BlogTitle, new {@class="form-control"})
+                        @Html.ValidationMessageFor(x => x.BlogTitle, "", new{@class=" alert-danger"})
+
+
+             @Html.Label("Blog Görseli")
+            @Html.TextBoxFor(x => x.BlogImage, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.BlogImage, "", new{@class=" alert-danger"})
+            <br />
+            @Html.Label("Film Süresi ")
+            @Html.TextBoxFor(x => x.FilmTimeInfo, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.FilmTimeInfo, "", new{@class=" alert-danger"})
+            <br />
+            @Html.Label("Yönetmen  ")
+            @Html.TextBoxFor(x => x.Director, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.Director, "", new{@class=" alert-danger"})
+            <br />
+            @Html.Label("IMDB  ")
+            @Html.TextBoxFor(x => x.Imdb, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.Imdb, "", new{@class=" alert-danger"})
+            <br />
+            @Html.Label("Fragman  - Açıklama: Yalnızca Youtube Linki paylaşmalısınız ve Linkte 'v=' alanından sonraki karekterleri girmelisiniz- ")
+            @Html.TextBoxFor(x => x.TrailerUrl, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.TrailerUrl, "", new{@class=" alert-danger"})
+            <br />
+
+            @Html.Label("Kategori")
+
+            @Html.DropDownListFor(x => x.CategoryId,(List<SelectListItem>)ViewBag.categories, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.CategoryId, "", new{@class=" alert-danger"})
+
+            @Html.Label("Blog İçeriği")
+            @Html.TextAreaFor(x => x.BlogContent, 15,3, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.BlogContent, "", new{@class=" alert-danger"})
+            <br />
+
+
+            <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
+        }
+    </div>
+</div>

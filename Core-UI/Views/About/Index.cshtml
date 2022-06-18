@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EntityLayer.Concrete.About>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+<div class="w3l-ab-grids py-5">
+		<div class="container py-lg-4">
+			@foreach (var item in Model)
+		   {
+			   	<div class="row ab-grids-sec align-items-center">
+				
+				   <div class="col-lg-6 ab-right">
+					<img class="img-fluid" src="@item.AboutImage">
+				</div>
+
+				<div class="col-lg-6 ab-left pl-lg-4 mt-lg-0 mt-5">
+					<h3 class="hny-title">@item.AboutTitle </h3>
+					<p class="mt-3">@item.AboutContent1</p>
+					<div class="ready-more mt-4">
+						<a href="#" class="btn read-button">Read More <span class="fa fa-angle-double-right ml-2" aria-hidden="true"></span></a>
+					</div>
+				</div>
+			</div>
+		   }
+		
+		   
+			<div class="w3l-counter-stats-info text-center">
+				<div class="stats_left">
+				@await Component.InvokeAsync("NumberOfCategories")
+				</div>
+
+				<div class="stats_left">
+					@await Component.InvokeAsync("NumberOfBlogs")
+				
+				</div>
+				
+				<div class="stats_left">
+					@await Component.InvokeAsync("NumberOfWriters")
+					
+				</div>
+
+				<div class="stats_left">
+					<div class="counter_grid">
+						<div class="icon_info">
+							<p class="counter">5063</p>
+							<h4>Üye Sayısı</h4>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>

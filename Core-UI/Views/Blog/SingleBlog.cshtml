@@ -1,0 +1,89 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@{
+    ViewData["Title"] = "SingleBlog";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+<section class="w3l-blog-single">
+    <div class="single blog py-5">
+        <div class="container py-lg-4">
+            <div style="margin: 8px auto; display: block; text-align:center;">
+
+                <!---728x90--->
+
+
+            </div>
+            <div class="title-content text-left">
+                <h3 class="hny-title">Blog Detayları </h3>
+            </div>
+            <div class="d-grid grid-colunm-2 mt-4">
+                <!-- left side blog post content -->
+                <div class="single-left">
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="single-left1">
+
+                            <div class="blg-img">
+                                <img src="@item.BlogImage" alt=" " class="img-fluid" style="width:500px; align-self:center;">
+                            </div>
+
+                            <div class="btom-cont btom-cont1 pt-4 mt-md-2">
+                                <h4><span class="fa fa-clock-o mr-1" aria-hidden="true"></span> @(((DateTime)item.CreateDate).ToString("dd-MM-yyyy"))</h4>
+                                <h5 class="card-title"><a href="#">@item.BlogTitle</a></h5>
+                                <ul class="admin-post">
+                                    <li>
+                                        <a href="blog-single.html"><span class="fa fa-user"></span> @item.UserID</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-single.html"><span class="fa fa-heart-o"></span> 50</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-single.html">
+                                            <span class="fa fa-comments-o"></span> 20
+                                            Comments
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p class="mb-4 mt-4">
+                                    @item.BlogContent
+                                </p>
+                            </div>
+                        </div>
+                        <blockquote class="blockquote my-5">
+									<div class="icon-quote"><span class="fa fa-quote-left" aria-hidden="true"></span>
+									</div>
+									Yönetmen 
+									<footer class="blockquote-footer mt-3">
+										@item.Director</footer>
+								</blockquote>
+                      
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/@item.TrailerUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                       
+
+                    }
+
+
+                    <div class="comments mt-5">
+                        
+
+                        @await Component.InvokeAsync("CommentListByBlog", new {id = ViewBag.id })
+
+
+                    </div>
+
+
+                    @await Html.PartialAsync("/Views/Comment/PartialCommentAdd.cshtml", new {id = ViewBag.id })
+
+
+                </div>
+                <!-- left side blog post content -->
+                <!-- right side bar -->
+                @await Component.InvokeAsync("SingleBlogRightSide")
+
+                <!-- //right side bar -->
+            </div>
+        </div>
+    </div>
+</section>

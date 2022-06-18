@@ -1,0 +1,59 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@{
+    ViewData["Title"] = "CategoryDetails";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<section class="w3l-grids">
+    <div class="grids-main py-5">
+        <div class="container py-lg-4">
+            <div class="headerhny-title">
+                <div class="w3l-title-grids">
+                    <div class="headerhny-left">
+
+                        <h4><a class="show-title" href="genre.html">@ViewBag.CategoryName</a></h4>
+                    </div>
+
+                </div>
+            </div>
+            <div class="w3l-populohny-grids">
+                @ViewBag.empty
+                @foreach (var item in Model)
+                {
+
+                    <div class="item vhny-grid">
+                        <div class="box16 mb-0">
+                            <a href="#">
+                                <figure>
+                                    <img class="img-fluid" src="@item.BlogImage" alt="">
+                                </figure>
+                                <div class="box-content">
+                                    <h3 class="title">@item.BlogTitle</h3>
+                                    <h4>
+                                        <span class="post">
+                                            <span class="fa fa-clock-o"> </span> @item.FilmTimeInfo
+
+                                        </span>
+
+                                        <span class="post fa fa-heart text-right"></span>
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+        </div>
+
+        <div class="button-center text-center mt-3">
+            <a href="/Category/Index/" class="btn view-button">
+                Geri Dön <span class="fa fa-angle-double-left ml-2"
+                               aria-hidden="true"></span>
+            </a>
+        </div>
+
+    </div>
+</section>

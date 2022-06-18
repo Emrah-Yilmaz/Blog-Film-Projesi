@@ -1,0 +1,68 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+
+@{
+    ViewData["Title"] = "DashboardMyBlog";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th> Film Adı </th>
+                        <th> Film Süresi </th>
+                        <th> Yayından Kaldır </th>
+                        <th> Düzenle </th>
+                        <th> Sitede Göster </th>
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td> @item.BlogTitle  </td>
+                            <td> @item.FilmTimeInfo </td>
+                            <td>
+                                @if(@item.BlogStatus == true)
+                                {
+                                    <a href="/Blog/DeleteBlog/@item.BlogId" onclick="return confirm('Silmek istediğinize Emin misiniz ?');" class="btn btn-danger">Kaldır </a>
+                                }
+                                else
+                                {
+                                 <a href="/Blog/ReloadBlog/@item.BlogId" onclick="return confirm('Yeniden Yüklemek İstediğinize Emin misiniz ?');" class="btn btn-danger">Yeniden Yükle</a>
+     
+                                }
+
+
+                            </td>
+
+                            <td>
+                                <a href="/Blog/DashboardEditBlog/@item.BlogId" class="btn btn-success"> Düzenle</a>
+                            </td>
+
+                            <td>
+                                <a href="/Blog/SingleBlog/@item.BlogId" class="btn btn-info">Göster</a>
+                            </td>
+
+
+
+                        </tr>
+
+                    }
+
+
+
+                </tbody>
+
+            </table>
+
+
+        </div>
+    </div>
+</div>

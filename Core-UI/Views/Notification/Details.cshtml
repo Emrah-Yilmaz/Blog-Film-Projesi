@@ -1,0 +1,33 @@
+﻿ @model IEnumerable<EntityLayer.Concrete.Notification>
+ @{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        @foreach (var item in Model)
+        {
+
+            <div class="card text-center">
+                <div class="card-header">
+                    Bildirim
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">@item.NotificationType</h5>
+                    <p class="card-text">@item.NotificationDetails</p>
+
+                
+                </div>
+                <div class="card-footer text-muted">
+                    @item.NotificationDate.ToString()
+                </div>
+            </div>
+
+
+        }
+
+    </div>
+</div>

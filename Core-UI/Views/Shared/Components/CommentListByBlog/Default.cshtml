@@ -1,0 +1,21 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+
+      
+    <h3 class="aside-title">Yorumlar</h3>
+
+    @foreach (var item in Model)
+   {
+         <div class="media mt-5">
+    <div class="img-circle">
+        <img src="~/Theme/BlogTema/assets/images/c3.jpg" class="mr-3 rounded-circle" alt="...">
+    </div>
+    <div class="media-body">
+
+        <h5 class="mt-0">@item.CommentUsername</h5>
+        <span class="time">@item.CommentDate.ToShortDateString()</span>
+        <p>
+          @item.CommentContent
+        </p>
+    </div>
+</div>       
+   }

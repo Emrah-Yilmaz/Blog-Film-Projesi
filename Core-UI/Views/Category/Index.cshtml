@@ -1,0 +1,89 @@
+﻿@using EntityLayer.Concrete
+@model List<CategoryVm>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+
+<section class="w3l-blog-single">
+    <div class="single blog py-5">
+        <div class="container py-lg-4">
+            <div style="margin: 8px auto; display: block; text-align:center;">
+
+                <!---728x90--->
+
+
+            </div>
+            <div class="title-content text-left">
+                
+            </div>
+            <div class="d-grid grid-colunm-2 mt-4">
+                <!-- left side blog post content -->
+                <div class="single-left">
+
+
+                    <div class="single-left1">
+                        
+                        <aside class="posts">
+                            <h3 class="aside-title">Kategori Listesi </h3>
+                            <ul class="category">
+
+                                @foreach (var item in Model)
+                               {
+                                    <li>
+                                    <a href="/Category/CategoryDetails/@item.Id">
+                                        <span class="fa fa-angle-right"></span> @item.Name
+                                        <label>(@item.ItemCount)</label>
+                                        
+                                    </a>
+                                </li>
+                               }
+                               
+                              
+                            </ul>
+                        </aside>
+
+
+                    </div>
+
+
+
+
+                </div>
+                <!-- left side blog post content -->
+                <!-- right side bar -->
+
+                <div class="right-side-bar">
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <blockquote>
+                                    <q>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
+                                        voluptate rem ullam dolore!.
+                                    </q>
+                                </blockquote>
+                                <div class="testi-des">
+                                    <div class="test-img">
+                                        <img src="~/Theme/BlogTema/assets/images/team1.jpg" class="img-fluid" alt="/">
+                                    </div>
+                                    <div class="peopl align-self">
+                                        <h3>Johnson smith</h3>
+                                        <p class="indentity">Washington</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- //right side bar -->
+            </div>
+        </div>
+    </div>
+</section>

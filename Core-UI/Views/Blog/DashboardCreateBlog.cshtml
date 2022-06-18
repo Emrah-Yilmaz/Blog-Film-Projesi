@@ -1,0 +1,56 @@
+﻿@model EntityLayer.Concrete.Blog
+@{
+    ViewData["Title"] = "DashboardCreateBlog";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<h1 class="alert-success">@ViewBag.added</h1>
+@using (Html.BeginForm("DashboardCreateBlog", "Blog", FormMethod.Post))
+        {
+
+            @Html.Label("Başlık")
+            @Html.TextBoxFor(x => x.BlogTitle, new {@class="form-control"})
+            @Html.ValidationMessageFor(x => x.BlogTitle, "", new{@class=" alert-danger"})
+            <br />
+
+            @Html.Label("Blog Görseli")
+            @Html.TextBoxFor(x => x.BlogImage, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.BlogImage, "", new{@class=" alert-danger"})
+            <br />
+            @Html.Label("Film Süresi ")
+            @Html.TextBoxFor(x => x.FilmTimeInfo, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.FilmTimeInfo, "", new{@class=" alert-danger"})
+            <br />
+            @Html.Label("Yönetmen  ")
+            @Html.TextBoxFor(x => x.Director, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.Director, "", new{@class=" alert-danger"})
+            <br />
+            @Html.Label("IMDB  ")
+            @Html.TextBoxFor(x => x.Imdb, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.Imdb, "", new{@class=" alert-danger"})
+            <br />
+            @Html.Label("Fragman  - Açıklama: Yalnızca Youtube Linki paylaşmalısınız ve Linkte 'v=' alanından sonraki karekterleri girmelisiniz- ")
+            @Html.TextBoxFor(x => x.TrailerUrl, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.TrailerUrl, "", new{@class=" alert-danger"})
+            <br />
+
+            @Html.Label("Kategori")
+
+            @Html.DropDownListFor(x => x.CategoryId,(List<SelectListItem>)ViewBag.categories, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.CategoryId, "", new{@class=" alert-danger"})
+
+            @Html.Label("Blog İçeriği")
+            @Html.TextAreaFor(x => x.BlogContent, 15,3, new{@class="form-control"})
+            @Html.ValidationMessageFor(x => x.BlogContent, "", new{@class=" alert-danger"})
+            <br />
+
+
+            <button type="submit" class="btn btn-gradient-primary mr-2" id="btn1">Kaydet</button>
+            <button class="btn btn-light">Vazgeç</button>
+        }
+     <script>
+    $('#btn1').click( function(){
+    swal("Hello world!");
+    });
+</script>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+
+<section class="w3l-grids">
+    <div class="grids-main py-5">
+        <div class="container py-lg-3">
+            <div class="headerhny-title">
+                <div class="w3l-title-grids">
+                    <div class="headerhny-left">
+                        <h3 class="hny-title">Popüler Filmler</h3>
+                    </div>
+                    <div class="headerhny-right text-lg-right">
+                        <h4><a class="show-title" href="/Blog/PopularFilms/">Tümünü Göster</a></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="w3l-populohny-grids">
+
+
+
+                @foreach (var item in Model)
+                {
+                    <div class="item vhny-grid">
+                        <div class="box16">
+                            <a href="/Blog/SingleBlog/@item.BlogId">
+                                <figure>
+                                    <img class="img-fluid" src="@item.BlogImage" alt="">
+                                </figure>
+                                <div class="box-content">
+                                    <h3 class="title">@item.BlogTitle</h3>
+                                    <h4>
+                                        <span class="post">
+                                            <span class="fa fa-clock-o"> </span>@item.FilmTimeInfo
+
+                                        </span>
+
+                                        <span class="post fa fa-heart text-right"></span>
+                                    </h4>
+                                </div>
+                                <span class="fa fa-play video-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                }
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<div class="row">
+
+
+@await Component.InvokeAsync("DashboardCircle")
+@await Component.InvokeAsync("DashboardCircleCategory")
+
+
+</div>
+@await Component.InvokeAsync("DashboardWriterAbout")
+@await Component.InvokeAsync("DashboardBlogListByWriter")
+
