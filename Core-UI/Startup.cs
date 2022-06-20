@@ -55,8 +55,8 @@ namespace Core_UI
                 //Cookie settings
                 opts.Cookie.HttpOnly = true;
                 opts.ExpireTimeSpan = TimeSpan.FromMinutes(100);
-                opts.AccessDeniedPath = new PathString("/Login/Index/");
-                opts.LoginPath = "/Login/Index/";
+                opts.AccessDeniedPath = new PathString("/Account/AccessDenied");
+                opts.LoginPath = "/Account/Login/";
                 opts.SlidingExpiration = true;
             });
 
@@ -90,13 +90,20 @@ namespace Core_UI
             app.UseRouting();
 
             app.UseAuthentication();
-            //app.UseAuthorization();
+            app.UseAuthorization();
             app.UseMiddleware<AuthenticationMiddleware>();
             app.UseEndpoints(endpoints =>
             {
+
+                endpoints.MapControllerRoute(
+              name: "areas",
+              pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Account}/{action=Login}/{id?}");
+
+               
             });
         }
     }

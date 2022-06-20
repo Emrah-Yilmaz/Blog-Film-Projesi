@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@{
+    ViewData["Title"] = "BlogDetails";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<div class="row animated fadeInRight">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Blog Detayları</h5>
+                </div>
+                <div>
+                    <div class="ibox-content no-padding border-left-right">
+                        <img alt="image" class="img-fluid" src="@item.BlogImage">
+                    </div>
+                    <div class="ibox-content profile-content">
+                        <h4><strong>@item.BlogTitle</strong></h4>
+                        <p><i class="fa fa-envolepe-open"></i> @item.Category</p>
+                        <p><i class="fa fa-video-camera"></i><strong> Yönetmen : </strong> @item.Director</p>
+                        <p><i class="fa fa-clock-o"></i><strong> Oluşturulma Tarihi : </strong>@item.CreateDate.ToShortDateString()</p>
+
+                        <h5>
+                            Film Hakkında
+                        </h5>
+                        <p>
+                                    @item.BlogContent
+                            </p>
+
+                        <div class="user-button">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Mesaj Gönder </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+

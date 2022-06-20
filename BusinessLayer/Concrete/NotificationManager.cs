@@ -21,7 +21,7 @@ namespace BusinessLayer.Concrete
 
         public void AddT(Notification entity)
         {
-            throw new NotImplementedException();
+           _genericDal.Add(entity);
         }
 
         public Notification GetItem(int id)

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@{
+    ViewData["Title"] = "AllBlog";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper wrapper-content animated fadeInUp">
+
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            <h5>Tüm Bloglar</h5>
+                           
+                        </div>
+                        <div class="ibox-content">
+                           
+
+                            <div class="project-list">
+
+                                <table class="table table-hover">
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                       {
+                                            <tr>
+                                        <td class="project-status">
+                                            @if(item.BlogStatus== true)
+                                            {
+                                                <span class="label label-primary">Yayında</span>
+                                            }
+                                            else
+                                            {
+                                               <span class="label label-default">Yayından Kaldırılmış</span>
+
+                                            }
+
+                                        </td>
+                                        <td class="project-title">
+                                            <a href="project_detail.html">@item.BlogTitle</a>
+                                            <br>
+                                            <small>@item.CreateDate</small>
+                                        </td>
+                                       <td class="project-actions">
+                                           <a href="/Admin/User/ProfileDetails/@item.UserID" class="btn btn-info">Yazarı Göster </a>
+                                        </td>
+                                     
+                                        <td class="project-actions">
+                                           <a href="/Admin/Blog/BlogDetails/@item.BlogId" class="btn btn-success">Bloğu Göster</a>
+                                        </td>
+                                    </tr>
+                                       }
+                                   
+                                 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

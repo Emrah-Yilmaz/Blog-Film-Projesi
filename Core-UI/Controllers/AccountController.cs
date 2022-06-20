@@ -76,6 +76,7 @@ namespace Core_UI.Controllers
                 if (result.Succeeded)
                 {
                     HttpContext.Session.SetString("Username", userSignInViewModel.Username);
+                    
                     return RedirectToAction("Index", "Dashboard");
                 }
                 else
@@ -114,6 +115,10 @@ namespace Core_UI.Controllers
 
 
             return RedirectToAction("Index","Dashboard");   
+        }
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
        
     }

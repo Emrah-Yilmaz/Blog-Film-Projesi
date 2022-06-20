@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Concrete.Blog
+@{
+
+    ViewData["Title"] = "AllMembers";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Basic form elements</h4>
+        <p class="card-description"> Basic form elements </p>
+        <h1 class="alert-success text-center">@ViewBag.published</h1>
+        <h1 class="alert-danger text-center">@ViewBag.unpublished</h1>
+        
+
+        @using (Html.BeginForm("BlogApprovalProcess", "Admin", FormMethod.Post))
+        {
+            @Html.Label("Blog ID")
+            @Html.TextBoxFor(x => x.BlogId, new {@class="form-control", @readonly="readonly"})
+
+            @Html.Label("Başlık")
+            @Html.TextBoxFor(x => x.BlogTitle, new {@class="form-control", @readonly="readonly"})
+                        @Html.ValidationMessageFor(x => x.BlogTitle, "", new{@class=" alert-danger"})
+
+            @Html.Label("Blog Durumu")
+            @Html.TextBoxFor(x => x.BlogStatus, new {@class="form-control", @readonly="readonly"})
+
+            <br />
+            <button type="submit" class="btn btn-info  container-fluid"> Onayla</button>
+        }
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EntityLayer.Concrete.AppUser>
+@{
+    ViewData["Title"] = "AllMembers";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-9">
+                    <h2>Tüm Üyelerimiz</h2>
+                    
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+
+            @foreach (var item in Model)
+           {
+                <div class="col-lg-4">
+                <div class="contact-box">
+                    <a class="row" href="/Admin/User/ProfileDetails/@item.Id">
+                    <div class="col-4">
+                        <div class="text-center">
+                            <img alt="image" class="rounded-circle m-t-xs img-fluid" src="@item.ImageUrl">
+                            <div class="m-t-xs font-bold">@item.UserName</div>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <h3><strong>@item.NameSurname</strong></h3>
+                        <p>@item.Email</p>
+                        <address>
+                            <strong>@item.PhoneNumber</strong><br>
+                            795 Folsom Ave, Suite 600<br>
+                            San Francisco, CA 94107<br>
+                            <abbr title="Phone">P:</abbr> (123) 456-7890
+                        </address>
+                    </div>
+                        </a>
+                </div>
+            </div>
+           }
+           
+          
+        </div>
+        </div>

@@ -1,0 +1,31 @@
+﻿@model EntityLayer.Concrete.Notification
+@{
+    ViewData["Title"] = "CreateNotification";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+
+
+<div class="col-lg-12 animated fadeInRight">
+    <div class="mail-box-header">
+        <h2>
+            Bildirim Oluşturma Sayfası
+        </h2>
+    </div>
+    <div class="mail-box">
+        <div class="mail-body">
+            <h1 class="alert-success text-center">@ViewBag.message</h1>
+
+            @using (Html.BeginForm("CreateNotification", "Notification", FormMethod.Post))
+            {
+                @Html.Label("Bildirim Türü")
+                @Html.DropDownListFor(x => x.NotificationType,(List<SelectListItem>)ViewBag.categories, new{@class="form-control"})
+
+                @Html.Label("Mesajınız")
+                @Html.TextAreaFor(x => x.NotificationDetails, new{@class="form-control", @placeholder="Kullanıcı Adı"})
+                <br />
+                <button type="submit" class="btn btn-success container-fluid" id="btn1">Gönder</button>
+            }
+        </div>
+    </div>
+</div>

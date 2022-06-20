@@ -1,0 +1,62 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@ViewBag.haftagunu
+ <div class="col-lg-3">
+  
+         <div class="ibox ">
+            <div class="ibox-title">
+                <span class="label label-success float-right"> Aylık</span>
+                <h5>Blog </h5>
+            </div>
+            <div class="ibox-content">
+                <h1 class="no-margins">@ViewBag.monthly  </h1>
+                <small>Ayın ilk günü ve bugün arasındaki blog sayısı </small>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-3">
+         <div class="ibox ">
+            <div class="ibox-title">
+                <span class="label label-info float-right">Haftalık</span>
+                <h5>Blog</h5>
+            </div>
+            <div class="ibox-content">
+                <h1 class="no-margins">@ViewBag.weekly</h1>
+                <small>Haftanın ilk günü ve bugün arasındaki blog sayısı</small>
+            </div>
+        </div>      
+
+       
+    </div>
+
+    <div class="col-lg-3">
+       <div class="ibox ">
+            <div class="ibox-title">
+                <span class="label label-primary float-right">Günlük</span>
+                <h5>Blog</h5>
+            </div>
+            <div class="ibox-content">
+                <h1 class="no-margins">@ViewBag.daily</h1>
+                <small>Son 24 saatlik blog sayısı</small>
+            </div>
+        </div>        
+
+        
+    </div>
+
+    <div class="col-lg-3">
+             
+         <div class="ibox ">
+            <div class="ibox-title">
+                <span class="label label-danger float-right">Toplam</span>
+                <h5>Blog </h5>
+            </div>
+            <div class="ibox-content">
+                <h1 class="no-margins">@ViewBag.total</h1>
+                <small>Toplam blog sayısı </small>
+            </div>
+        </div>
+
+       
+    </div>
