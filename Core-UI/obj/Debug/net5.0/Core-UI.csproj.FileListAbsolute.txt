@@ -220,3 +220,8 @@ C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\
 C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\User\Moderators.cshtml.g.cs
 C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\User\Admins.cshtml.g.cs
 C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Comment\Index.cshtml.g.cs
+C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminRole\Index.cshtml.g.cs
+C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminRole\AddRole.cshtml.g.cs
+C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminRole\UpdateRole.cshtml.g.cs
+C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminRole\UserRoleList.cshtml.g.cs
+C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminRole\RoleAssign.cshtml.g.cs

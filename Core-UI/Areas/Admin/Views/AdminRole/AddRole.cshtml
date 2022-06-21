@@ -1,0 +1,16 @@
+﻿@using Core_UI.Models
+@model  RoleViewModel
+@{
+    ViewData["Title"] = "AddRole";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<h1 class="text-center">Rol Ekleme Sayfası</h1>
+<form method="post">
+    <div class="form-group">
+        <label>Rol Adı</label>
+        <input type="text" name="Name" class="form-control" />
+    </div>
+    <button class="btn btn-outline-success">Rol Ekle</button>
+</form>
+

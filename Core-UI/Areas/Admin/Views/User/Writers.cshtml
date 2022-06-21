@@ -1,8 +1,27 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<AppUser>
 @{
     ViewData["Title"] = "Writers";
     Layout = "~/Views/Shared/_AdminDashboard.cshtml";
 }
-
-<h1>Writers</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Kullanıcı Adı</th>
+            <th scope="col">Mail Adresi</th>
+            <th scope="col">Profili</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+       {
+            <tr>
+            <th > @item.UserName</th>
+            <td>@item.Email</td>
+            <td> <a href="/Admin/User/ProfileDetails/@item.Id" class="btn btn-success">Profile Git</a> </td>
+        </tr>
+       }
+       
+    </tbody>
+</table>
 

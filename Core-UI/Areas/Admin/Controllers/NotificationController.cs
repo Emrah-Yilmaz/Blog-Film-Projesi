@@ -11,7 +11,7 @@ using System.Linq;
 namespace Core_UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Amin")]
+    [Authorize(Roles = "Admin")]
 
     public class NotificationController : Controller
     {
