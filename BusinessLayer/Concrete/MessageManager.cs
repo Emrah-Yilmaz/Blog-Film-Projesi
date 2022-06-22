@@ -31,7 +31,7 @@ namespace BusinessLayer.Concrete
 
         public List<Message> GetList()
         {
-            throw new NotImplementedException();
+            return _genericDal.GetList();
         }
 
         public List<Message> GetList(Expression<Func<Message, bool>> filter = null)

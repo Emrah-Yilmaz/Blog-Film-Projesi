@@ -26,7 +26,7 @@ namespace BusinessLayer.Concrete
 
         public Notification GetItem(int id)
         {
-            throw new NotImplementedException();
+            return _genericDal.GetItem(filter: x => x.NotificationId == id);
         }
 
         public List<Notification> GetList()
@@ -52,7 +52,7 @@ namespace BusinessLayer.Concrete
 
         public void RemoveT(Notification entity)
         {
-            throw new NotImplementedException();
+            _genericDal.Delete(entity);
         }
 
         public void Update(Notification entity)

@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
@@ -17,6 +18,7 @@ namespace Core_UI.Areas.Admin.Controllers
     {
         private readonly NotificationManager notificationManager = new(new EfNotificationRepository());
 
+
         public IActionResult CreateNotification()
         {
             SubCategory();
@@ -33,10 +35,11 @@ namespace Core_UI.Areas.Admin.Controllers
                 notification.NotificationStatus = true;
                 notification.NotificationDate = DateTime.Now;
             }
-            else if (notification.NotificationType == "mdi mdi-settings")
+            else if (notification.NotificationType == "Ayarlar")
             {
                 notification.NotificationTypeSymbol = "mdi mdi-calendar";
                 notification.NotificationColor = "preview-icon bg-warning";
+                notification.NotificationTypeSymbol = "mdi mdi-calendar";
 
                 notification.NotificationStatus = true;
                 notification.NotificationDate = DateTime.Now;
@@ -71,5 +74,13 @@ namespace Core_UI.Areas.Admin.Controllers
             var values = notificationManager.GetList();
             return View(values);
         }
+        public IActionResult DeleteNotification(int id)
+        {
+            var result = notificationManager.GetItem(id);
+            result.NotificationStatus = false;
+            notificationManager.RemoveT(result);
+            return RedirectToAction("AllNotification", "Notification");
+        }
+       
     }
 }

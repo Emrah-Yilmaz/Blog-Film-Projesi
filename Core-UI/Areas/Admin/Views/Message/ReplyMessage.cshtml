@@ -1,0 +1,27 @@
+﻿@model EntityLayer.Concrete.Message
+
+@{
+    ViewData["Title"] = "ReplyMessage";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Basic form elements</h4>
+        <p class="card-description"> Basic form elements </p>
+
+        @using (Html.BeginForm("ReplyMessage", "Message","Admin", FormMethod.Post))
+        {
+           
+            @Html.Label("Gönderen")
+            @Html.TextBoxFor(x => x.ReceiverUsername, new {@class="form-control"})
+
+            @Html.Label("Mesaj İçeriği")
+            @Html.TextAreaFor(x => x.MessageDetails, 15,3, new{@class="form-control"})
+
+
+            <button type="submit" class="btn btn-gradient-primary mr-2">Cevapla</button>
+        }
+    </div>
+</div>

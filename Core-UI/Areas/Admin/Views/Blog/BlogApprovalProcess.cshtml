@@ -13,7 +13,7 @@
         <h1 class="alert-danger text-center">@ViewBag.unpublished</h1>
         
 
-        @using (Html.BeginForm("BlogApprovalProcess", "Admin", FormMethod.Post))
+        @using (Html.BeginForm("BlogApprovalProcess", "Blog", FormMethod.Post))
         {
             @Html.Label("Blog ID")
             @Html.TextBoxFor(x => x.BlogId, new {@class="form-control", @readonly="readonly"})
@@ -26,7 +26,8 @@
             @Html.TextBoxFor(x => x.BlogStatus, new {@class="form-control", @readonly="readonly"})
 
             <br />
-            <button type="submit" class="btn btn-info  container-fluid"> Onayla</button>
+            
+            <button type="submit" class="btn btn-info  container-fluid"> @ViewBag.buton</button>
         }
     </div>
 </div>

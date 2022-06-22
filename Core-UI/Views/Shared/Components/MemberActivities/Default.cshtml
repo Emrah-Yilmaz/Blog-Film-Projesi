@@ -28,7 +28,8 @@
                                     <th>#</th>
                                     <th>Blog</th>
                                     <th>Durumu</th>
-                                    <th>Detaylar </th>
+                                    <th>Onay Sayfası </th>
+                                    <th>Detaylar  </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -38,7 +39,8 @@
                                     <td>@item.BlogId</td>
                                     <td>@item.BlogTitle</td>
                                     <td>@item.BlogStatus</td>
-                                    <td><a href="/Admin/Blog/BlogApprovalProcess/@item.BlogId" class="btn btn-info">Göster </a> </td>
+                                    <td><a href="/Admin/Blog/BlogDetails/@item.BlogId" class="btn btn-info">Detayları Göster</a> </td>
+                                    <td><a href="/Admin/Blog/BlogApprovalProcess/@item.BlogId" class="btn btn-danger">Onay Sayfasında Göster </a> </td>
                                 </tr>
                                     }
                                

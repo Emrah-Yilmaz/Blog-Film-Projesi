@@ -225,3 +225,9 @@ C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\
 C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminRole\UpdateRole.cshtml.g.cs
 C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminRole\UserRoleList.cshtml.g.cs
 C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminRole\RoleAssign.cshtml.g.cs
+C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Message\Index.cshtml.g.cs
+C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Message\Inbox.cshtml.g.cs
+C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Message\ReplyMessage.cshtml.g.cs
+C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Blog\WeeklyBlog.cshtml.g.cs
+C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Blog\MonthlyBlog.cshtml.g.cs
+C:\Users\emrah\source\repos\Core-Blog-Film\Core-UI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Blog\Dailyblog.cshtml.g.cs
