@@ -1,0 +1,81 @@
+﻿@model EntityLayer.Concrete.About
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                                    <h1 class="alert-success text-center">@ViewBag.msg</h1>
+                                    <h1 class="alert-danger text-center">@ViewBag.err</h1>
+
+                <h5>Kategori Ekleme Sayfası | <small> * Olan Alanlar Zorunludur  </small></h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#" class="dropdown-item">Config option 1</a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-item">Config option 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                      @using (Html.BeginForm("Edit", "About", FormMethod.Post))
+                {
+
+                     @Html.Label("* Hakkında Sayfasında Görüntülenecek Açıklama")
+                    @Html.TextBoxFor(x => x.AboutTitle, new {@class="form-control border border-primary "})
+                       @Html.ValidationMessageFor(x => x.AboutTitle, "", new{@class=" alert-danger"})
+                    <br />
+
+                    @Html.Label("* Hakkında Sayfasında Görüntülenecek Açıklama")
+                    @Html.TextAreaFor(x => x.AboutContent1,6,1, new {@class="form-control border border-primary"})
+                       @Html.ValidationMessageFor(x => x.AboutContent1, "", new{@class=" alert-danger"})
+                      <br />
+
+                    @Html.Label("*Hakkında Sayfasında Görüntülenecek Görsel")
+                    @Html.TextBoxFor(x => x.AboutImage, new {@class="form-control border border-primary"})
+                       @Html.ValidationMessageFor(x => x.AboutImage, "", new{@class=" alert-danger"})
+                      <br />
+                    @Html.Label("*İletişim Sayfasında Görüntülenecek Adres")
+                    @Html.TextBoxFor(x => x.OurAddress, new {@class="form-control border border-primary"})
+                       @Html.ValidationMessageFor(x => x.OurAddress, "", new{@class=" alert-danger"})
+                      <br />
+
+                    @Html.Label("*İletişim Sayfasında Görüntülenecek Mail Adresi")
+                    @Html.TextBoxFor(x => x.OurEmailAddress, new {@class="form-control border border-primary"})
+                       @Html.ValidationMessageFor(x => x.OurEmailAddress, "", new{@class=" alert-danger"})
+                      <br />
+
+                    @Html.Label("*İletişim Sayfasında Görüntülenecek Telefon Numarası")
+                    @Html.TextBoxFor(x => x.OurPhoneNumber, new {@class="form-control border border-primary"})
+                       @Html.ValidationMessageFor(x => x.OurPhoneNumber, "", new{@class=" alert-danger"})
+                      <br />
+
+                    @Html.Label("*İletişim Sayfasında Görüntülenecek GoogleMap Pini ")
+                    @Html.TextBoxFor(x => x.OurLocation, new {@class="form-control border border-primary"})
+                       @Html.ValidationMessageFor(x => x.OurLocation, "", new{@class=" alert-danger"})
+
+                    <br />
+                    <button class="btn btn-outline-success" type="submit">Hakkında Sayfasını Güncelle</button>
+                }
+
+               
+
+            </div>
+        </div>
+    </div>
+</div>

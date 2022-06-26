@@ -11,7 +11,7 @@
                 <div class="w3l-title-grids">
                     <div class="headerhny-left">
 
-                        <h4><a class="show-title" href="genre.html">@ViewBag.CategoryName</a></h4>
+                        <h4><a class="show-title" href="#">@ViewBag.CategoryName</a></h4>
                     </div>
 
                 </div>
@@ -20,10 +20,10 @@
                 @ViewBag.empty
                 @foreach (var item in Model)
                 {
-
+                   
                     <div class="item vhny-grid">
-                        <div class="box16 mb-0">
-                            <a href="#">
+                        <div class="box16">
+                            <a href="/Blog/SingleBlog/@item.BlogId">
                                 <figure>
                                     <img class="img-fluid" src="@item.BlogImage" alt="">
                                 </figure>
@@ -31,16 +31,18 @@
                                     <h3 class="title">@item.BlogTitle</h3>
                                     <h4>
                                         <span class="post">
-                                            <span class="fa fa-clock-o"> </span> @item.FilmTimeInfo
+                                            <span class="fa fa-clock-o"> </span>@item.FilmTimeInfo
 
                                         </span>
 
                                         <span class="post fa fa-heart text-right"></span>
                                     </h4>
                                 </div>
+                                <span class="fa fa-play video-icon" aria-hidden="true"></span>
                             </a>
                         </div>
                     </div>
+                 
                 }
 
 

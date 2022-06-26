@@ -18,6 +18,10 @@
             @Html.Label("Gönderen")
             @Html.TextBoxFor(x => x.ReceiverUsername, new {@class="form-control"})
 
+            @Html.Label("Başlık")
+            @Html.TextBoxFor(x => x.Subject, new {@class="form-control"})
+
+
             @Html.Label("Mesaj İçeriği")
             @Html.TextAreaFor(x => x.MessageDetails, 15,3, new{@class="form-control"})
 

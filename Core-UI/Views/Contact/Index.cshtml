@@ -45,69 +45,12 @@
                   
 
 
-                    @*<form  method="post" class="formhny-sec">
-                        <div class="form-grids">
-                        <div class="form-input">
-                        <input type="text" name="w3lName" id="w3lName" placeholder="Ad Soyad...   *" required="" />
-                        </div>
-                        <div class="form-input">
-                        <input type="text" name="w3lSubject" id="w3lSubject" placeholder="Konu Başlığı " required />
-                        </div>
-                        <div class="form-input">
-                        <input type="email" name="w3lSender" id="w3lSender" placeholder="Mail Adresiniz *"
-                        required />
-                        </div>
-                        <div class="form-input">
-                        <input type="text" name="w3lPhone" id="w3lPhone" placeholder="Telefon Numaranız *"
-                        required />
-                        </div>
-                        </div>
-                        <div class="form-input mt-4">
-                        <textarea name="w3lMessage" id="w3lMessage" placeholder="Mesajınız"
-                        required=""></textarea>
-                        </div>
-                        <div class="submithny text-right mt-4">
-                        <button class="btn read-button">Gönder</button>
-                        </div>
-                        </form>*@
                 </div>
+                    
+                @await Component.InvokeAsync("ContactInformation")
 
-                <div class="d-grid contact-addres-inf mt-5 pt-lg-4">
-                    <div class="contact-info-left d-grid">
-                        <div class="contact-info">
-                            <div class="icon">
-                                <span class="fa fa-location-arrow" aria-hidden="true"></span>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Adres:</h4>
-                                <p>Şişli / İstanbul, Türkiye</p>
-                            </div>
-                        </div>
-                        <div class="contact-info">
-                            <div class="icon">
-                                <span class="fa fa-phone" aria-hidden="true"></span>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Phone:</h4>
-                                <p><a href="tel:+598-658-456">+598-658-346</a></p>
-                                <p><a href="tel:+598-658-457">+598-658-436</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-info">
-                            <div class="icon">
-                                <span class="fa fa-envelope-open-o" aria-hidden="true"></span>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Mail:</h4>
-                                <p><a href="mailto:mail@example.com" class="email">emrahyilmaz57@outlook.com.tr</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
-    <div class="contact-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6015.760614239998!2d28.992547626776698!3d41.07160891717741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab6f83672f8bd%3A0x12c9d57e5a4cc0b8!2zTWVjaWRpeWVrw7Z5LCAzNDM4MSDFnmnFn2xpL8Swc3RhbmJ1bA!5e0!3m2!1str!2str!4v1653399454748!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+   
 </section>

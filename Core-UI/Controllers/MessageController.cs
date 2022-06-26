@@ -4,17 +4,18 @@ using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
-using System.Reflection;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Core_UI.Controllers
 {
+    [Authorize(Roles = "Admin, Moderator, Writer")]
+
     public class MessageController : Controller
     {
         private readonly MessageManager messages = new(new EfMessageRepository());
@@ -36,9 +37,11 @@ namespace Core_UI.Controllers
             //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = messages.GetListSelected(
             x => x.ReceiverUsername == user.UserName);
-            return View(result);
+
+            return View(result.OrderByDescending(x => x.MessageDate));
 
         }
+
         [HttpGet]
         public IActionResult CreateMessage()
         {
@@ -63,6 +66,7 @@ namespace Core_UI.Controllers
                     message.MessageStatus = true;
                     message.MessageDate = DateTime.Now;
                     messages.AddT(message);
+                    ViewBag.success = "Mesajınızı Başarıyla Gönderildi.";
                 }
                 else
                 {
@@ -79,6 +83,7 @@ namespace Core_UI.Controllers
 
             return View();
         }
+
         [HttpGet]
         public async Task<IActionResult> Inbox(int id)
         {
@@ -89,6 +94,7 @@ namespace Core_UI.Controllers
             return View(result);
         }
 
+
         [HttpPost]
         public IActionResult Inbox(Message message, int id)
         {
@@ -98,6 +104,7 @@ namespace Core_UI.Controllers
             messages.RemoveT(message);
             return RedirectToAction("Inbox", "Message");
         }
+
         [HttpGet]
         public IActionResult ReplyMessage(int id)
         {
@@ -105,6 +112,7 @@ namespace Core_UI.Controllers
             TempData["Veri"] = result.SenderUsername;
             return View(result);
         }
+
         [HttpPost]
         public async Task<IActionResult> ReplyMessage(Message message)
         {
@@ -120,29 +128,5 @@ namespace Core_UI.Controllers
 
             return View();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

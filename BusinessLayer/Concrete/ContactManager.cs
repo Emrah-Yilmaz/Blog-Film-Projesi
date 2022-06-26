@@ -26,22 +26,17 @@ namespace BusinessLayer.Concrete
 
         public Contact GetItem(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Contact> GetList()
-        {
-            throw new NotImplementedException();
+            return _genericDal.GetItem(x => x.ContactId == id);
         }
 
         public List<Contact> GetList(Expression<Func<Contact, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            return _genericDal.GetList(filter); 
         }
 
         public List<Contact> GetListItem(int id)
         {
-            throw new NotImplementedException();
+            return _genericDal.GetList(x => x.ContactId == id);
         }
 
         public List<Contact> GetListSelected(Expression<Func<Contact, bool>> filter)

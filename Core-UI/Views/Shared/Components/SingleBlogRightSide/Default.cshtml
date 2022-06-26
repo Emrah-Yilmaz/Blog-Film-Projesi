@@ -1,20 +1,22 @@
 ﻿@using EntityLayer.Concrete
 @model List<CategoryVm>
 
-  <div class="right-side-bar">
-                   
-                    <aside class="posts">
-                        <h3 class="aside-title">Top Movies</h3>
-                        <ul class="category">
-                          @foreach (var item in Model)
-                         {
-                              <li>
-                                <a href="/Category/CategoryDetails/@item.Id"><span class="fa fa-angle-right">
+<div class="right-side-bar">
 
-                                </span>@item.Name <label> (@item.ItemCount)</label></a>
-                            </li>   
-                         }
-                                        
-                        </ul>
-                    </aside>
-                </div>
+    <aside class="posts">
+        <h3 class="aside-title">Kategoriler</h3>
+        <ul class="category">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="/Category/CategoryDetails/@item.Id">
+                        <span class="fa fa-angle-right">
+
+                        </span>@item.Name <label> (@item.ItemCount)</label>
+                    </a>
+                </li>
+            }
+
+        </ul>
+    </aside>
+</div>

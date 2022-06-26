@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Core_UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize (Roles = "Admin")]
+    [Authorize(Roles = "Admin, Moderator")]
     public class AdminRoleController : Controller
     {
         private readonly RoleManager<AppRole> _roleManager;
@@ -95,7 +95,6 @@ namespace Core_UI.Areas.Admin.Controllers
         public IActionResult UserRoleList()
         {
             var values = _userManager.Users.ToList();
-
             return View(values);
         }
         public async Task<IActionResult> RoleAssign(string id)

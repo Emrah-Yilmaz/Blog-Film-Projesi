@@ -17,5 +17,6 @@ namespace BusinessLayer.Abstract
         T GetItem (int id);
         List<T> GetListSelected(Expression<Func<T, bool>> filter);
         List<T> GetListItem(int id);
+
     }
 }

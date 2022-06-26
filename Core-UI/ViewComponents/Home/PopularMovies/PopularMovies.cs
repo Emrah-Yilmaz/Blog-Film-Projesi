@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace BlogProject_Emrah_Yilmaz.ViewComponents.Blog.PopularMovies
 {
@@ -10,7 +11,7 @@ namespace BlogProject_Emrah_Yilmaz.ViewComponents.Blog.PopularMovies
 
         public IViewComponentResult Invoke()
         {
-            var values = blogManager.GetListSelected(x => x.SubCategory == 4);
+            var values = blogManager.GetListSelected(x => x.SubCategory == 4).Take(4);
             return View(values);
 
         }

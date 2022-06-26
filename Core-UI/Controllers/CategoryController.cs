@@ -20,7 +20,7 @@ namespace BlogProject_Emrah_Yilmaz.Controllers
             {
                 Id = x.CategoryId,
                 Name = x.CategoryName,
-                ItemCount = x.Blogs.Count()
+                ItemCount = x.Blogs.Count
             }
                                                      ).ToList();
             return View(categoryVmList);
@@ -32,6 +32,7 @@ namespace BlogProject_Emrah_Yilmaz.Controllers
             var values2 = categoryManager.GetItem(id);
             ViewBag.CategoryName = values2.CategoryName;
             var values = blogManager.GetListSelected(x => x.CategoryId == id);
+            
 
             return View(values);
 

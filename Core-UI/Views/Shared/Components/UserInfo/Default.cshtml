@@ -1,0 +1,21 @@
+﻿@model IEnumerable<EntityLayer.Concrete.AppUser>
+
+@foreach (var item in Model)
+{
+<div class="dropdown profile-element">
+    <img alt="image" class="rounded-circle" src="@item.ImageUrl" />
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <span class="block m-t-xs font-bold">@item.NameSurname </span>
+        <span class="text-muted text-xs block">@item.UserName <b class="caret"></b></span>
+    </a>
+    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+        <li><a class="dropdown-item" href="/Admin/User/ProfileDetails/@item.Id">Profil Bilgileri</a></li>
+        <li><a class="dropdown-item" href="/Admin/Message/Index/">Mailbox</a></li>
+        <li class="dropdown-divider"></li>
+        <li>
+            <a class="dropdown-item"asp-action="Logout" asp-controller="User"  asp-route-returnUrl="/Account/Login/"  >
+                <i class="mdi mdi-logout mr-2 text-primary"></i> Çıkış Yap
+            </a>
+        </li>
+    </ul>
+</div>}

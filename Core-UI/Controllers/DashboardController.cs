@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core_UI.Controllers
 {
-   
+    [Authorize(Roles = "Admin, Moderator, Writer")]
     public class DashboardController : Controller
     {
       

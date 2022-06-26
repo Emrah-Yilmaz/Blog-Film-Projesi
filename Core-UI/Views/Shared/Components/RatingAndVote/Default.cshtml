@@ -1,0 +1,14 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Rating>
+@foreach (var item in Model)
+{
+    <ul class="admin-post">
+
+        <li>
+            <a href="#"><span class="fa fa-user"> </span> @item.RatingCount</a>
+        </li>
+        <li>
+            <a href="#"><span class="fa fa-heart-o"></span> @item.RatingAverage /10</a>
+        </li>
+    </ul>
+
+}

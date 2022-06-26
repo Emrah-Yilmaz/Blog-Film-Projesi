@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Core_UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
-
+    [Authorize(Roles = "Admin, Moderator")]
     public class DashboardController : Controller
     {
         public IActionResult Index()

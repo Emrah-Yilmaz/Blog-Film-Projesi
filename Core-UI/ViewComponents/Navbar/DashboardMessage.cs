@@ -3,6 +3,7 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Core_UI.ViewComponents.Navbar.DashboardMessage
@@ -21,10 +22,10 @@ namespace Core_UI.ViewComponents.Navbar.DashboardMessage
         public IViewComponentResult Invoke()
         {
             var user = User.Identity.Name;
-            
+
             var messages = messageManager.GetListSelected(
-                x => x.ReceiverUsername == user);
-            return View(messages);
+                x => x.ReceiverUsername == user).TakeLast(3);
+            return View(messages.OrderByDescending(x => x.MessageDate));
         }
     }
 }

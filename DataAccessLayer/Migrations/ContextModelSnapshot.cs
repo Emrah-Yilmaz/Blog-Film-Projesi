@@ -441,6 +441,30 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Notifications");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Rating", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("RatingAverage")
+                        .HasColumnType("float");
+
+                    b.Property<int>("RatingBlogID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RatingCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RatingTotalScore")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Ratings");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.SubsCategory", b =>
                 {
                     b.Property<int>("SubCategory")
@@ -454,6 +478,24 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("SubCategory");
 
                     b.ToTable("SubsCategories");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Vote", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Score")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VoteOfBlogID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Votes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using Core_UI.MyMethods;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
@@ -12,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace BlogProject_Emrah_Yilmaz.Controllers
 {
@@ -30,9 +32,10 @@ namespace BlogProject_Emrah_Yilmaz.Controllers
             _userManager = userManager;
         }
         [AllowAnonymous]
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            return View();
+            var values = blogManager.GetList().ToPagedList(page, 3);
+            return View(values);
         }
         [AllowAnonymous]
         public IActionResult SingleBlog(int id)
@@ -63,13 +66,16 @@ namespace BlogProject_Emrah_Yilmaz.Controllers
 
             ViewBag.categories = categories;
         }
+        [Authorize(Roles = "Admin, Moderator, Writer")]
+
         [HttpGet]
         public IActionResult DashboardCreateBlog()
         {
-
+            
             DropList();
             return View();
         }
+        [Authorize(Roles = "Admin, Moderator, Writer")]
         [HttpPost]
         public async Task<IActionResult> DashboardCreateBlog(Blog blog)
         {
@@ -77,14 +83,22 @@ namespace BlogProject_Emrah_Yilmaz.Controllers
             ValidationResult result = blogValidator.Validate(blog);
             if (result.IsValid)
             {
-                blog.BlogStatus = true;
-                blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                blog.UserID = user.Id;
-                blogManager.AddT(blog);
+                if (Methods.IsThereBlog(blog.BlogTitle)==0)
+                {
+                    blog.BlogStatus = false;
+                    blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    blog.UserID = user.Id;
+                    blogManager.AddT(blog);
 
-                ViewBag.added = "Ekleme işlemi başarılı bir şekilde gerçekleşti ";
-                DropList();
-                return View();
+                    ViewBag.added = "Ekleme işlemi başarılı bir şekilde gerçekleşti ";
+                    DropList();
+                    return View();
+                }
+                else
+                {
+                    ViewBag.err = "Bu İsimde Bir Blog Zaten Var";
+                }
+               
             }
             else
             {
@@ -100,13 +114,15 @@ namespace BlogProject_Emrah_Yilmaz.Controllers
 
 
         }
-
+        [Authorize(Roles = "Admin, Moderator, Writer")]
         public async Task<IActionResult> DashboardMyBlog()
         {
             var user = await GetCurrentUserAsync();
             var bloglist = blogManager.GetListSelected(x => x.UserID == user.Id).ToList();
             return View(bloglist);
         }
+
+        [Authorize(Roles = "Admin, Moderator, Writer")]
         public IActionResult DashboardEditBlog(int id)
         {
 
@@ -121,6 +137,7 @@ namespace BlogProject_Emrah_Yilmaz.Controllers
             var result = blogManager.GetItem(id);
             return View(result);
         }
+        [Authorize(Roles = "Admin, Moderator, Writer")]
         [HttpPost]
         public async Task<IActionResult> DashboardEditBlog(Blog blog)
         {
@@ -151,6 +168,8 @@ namespace BlogProject_Emrah_Yilmaz.Controllers
 
 
         }
+
+        [Authorize(Roles = "Admin, Moderator, Writer")]
         public IActionResult DeleteBlog(int id)
         {
             var result = blogManager.GetItem(id);
@@ -165,6 +184,8 @@ namespace BlogProject_Emrah_Yilmaz.Controllers
             blogManager.Update(result);
             return RedirectToAction("DashboardMyBlog", "Blog");
         }
+
+        [Authorize(Roles = "Admin, Moderator, Writer")]
         [HttpPost]
         public IActionResult Search(Blog blog)
         {
@@ -173,7 +194,6 @@ namespace BlogProject_Emrah_Yilmaz.Controllers
 
             return View(result);
         }
-
 
     }
 

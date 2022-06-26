@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Rating>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+   
+</head>
+<body>
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">blog ıd</th>
+      <th scope="col">total score</th>
+      <th scope="col">count</th>
+      <th scope="col">average</th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach (var item in Model)
+     {
+         <tr>
+      <th scope="row">1</th>
+      <td>@item.RatingBlogID</td>
+      <td>@item.RatingTotalScore</td>
+      <td>@item.RatingCount</td>
+      <td>@item.RatingAverage</td>
+
+    </tr>
+   
+     }
+    
+  </tbody>
+</table>
+</body>
+</html>

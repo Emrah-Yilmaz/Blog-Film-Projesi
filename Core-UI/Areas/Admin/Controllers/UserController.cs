@@ -12,19 +12,20 @@ using System.Threading.Tasks;
 namespace Core_UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
-
+    [Authorize(Roles = "Admin, Moderator")]
     public class UserController : Controller
     {
         
         private readonly AppUserrManager userrManager = new(new EfAppUserRepository());
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<AppRole> _roleManager;
+        private readonly SignInManager<AppUser> _signInManager;
 
-        public UserController(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
+        public UserController(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _signInManager = signInManager;
         }
 
         public IActionResult AllMembers()
@@ -74,6 +75,10 @@ namespace Core_UI.Areas.Admin.Controllers
                                       where role.Name == "Admin"
                                       select user).ToListAsync();
             return View(useradminrole);
+        }
+        public async Task Logout()
+        {
+            await _signInManager.SignOutAsync();
         }
     }
 }

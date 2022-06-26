@@ -22,10 +22,13 @@
                 @Html.DropDownListFor(x => x.NotificationType,(List<SelectListItem>)ViewBag.categories, new{@class="form-control"})
 
                 @Html.Label("Mesajınız")
-                @Html.TextAreaFor(x => x.NotificationDetails, new{@class="form-control", @placeholder="Kullanıcı Adı"})
+                @Html.TextAreaFor(x => x.NotificationDetails, new{@class="form-control", @placeholder="Kullanıcı Adı", @id="txtemail"})
+
                 <br />
                 <button type="submit" class="btn btn-success container-fluid" id="btn1">Gönder</button>
             }
         </div>
     </div>
 </div>
+
+

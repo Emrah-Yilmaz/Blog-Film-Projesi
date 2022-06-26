@@ -58,35 +58,5 @@ namespace BusinessLayer.Concrete
         {
             _genericDal.Update(entity);
         }
-
-        //public void Add(Blog entity)
-        //{
-        //   _genericDal.Add(entity);
-        //}
-
-        //public void Delete(Blog entity)
-        //{
-        //    _genericDal.Delete(entity); 
-        //}
-
-        //public List<Blog> GetAll()
-        //{
-        //    return _genericDal.GetAll();    
-        //}
-
-        //public Blog GetItem(int id)
-        //{
-        //    return _genericDal.GetItem(id);
-        //}
-
-        //public List<Blog> GetListAll(Expression<Func<Blog, bool>> filter)
-        //{
-        //    return _genericDal.GetListAll(filter);
-        //}
-
-        //public void Update(Blog entity)
-        //{
-        //    _genericDal.Update(entity);
-        //}
     }
 }

@@ -4,7 +4,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Core_UI.Controllers
 {
@@ -40,6 +44,7 @@ namespace Core_UI.Controllers
                     Email = userSignUpViewModel.MailAdress,
                     UserName = userSignUpViewModel.Username,
                     NameSurname = userSignUpViewModel.NameSurname,
+                    
                     ImageUrl = "/Theme/writer/assets/images/faces/icon-account.png"
 
 
@@ -76,7 +81,7 @@ namespace Core_UI.Controllers
                 if (result.Succeeded)
                 {
                     HttpContext.Session.SetString("Username", userSignInViewModel.Username);
-                    
+
                     return RedirectToAction("Index", "Dashboard");
                 }
                 else
@@ -91,7 +96,7 @@ namespace Core_UI.Controllers
         {
             await _signInManager.SignOutAsync();
         }
-
+        [Authorize(Roles = "Admin, Moderator, Writer")]
         public async Task<IActionResult> UserEditProfile()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -99,14 +104,16 @@ namespace Core_UI.Controllers
             model.NameSurname = values.NameSurname;
             model.Email = values.Email;
             model.ImageUrl = values.ImageUrl;
-            
+
             return View(model);
         }
+
+        [Authorize(Roles = "Admin, Moderator, Writer")]
         [HttpPost]
         public async Task<IActionResult> UserEditProfile(UserUpdateViewModel model)
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            values.Email = model.Email; 
+            values.Email = model.Email;
             values.ImageUrl = model.ImageUrl;
             values.NameSurname = model.NameSurname;
             values.ImageUrl = model.ImageUrl;
@@ -114,12 +121,64 @@ namespace Core_UI.Controllers
             var result = await _userManager.UpdateAsync(values);
 
 
-            return RedirectToAction("Index","Dashboard");   
+            return RedirectToAction("Index", "Dashboard");
         }
         public IActionResult AccessDenied()
         {
             return View();
         }
-       
+        public IActionResult PasswordReset()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> PasswordReset(ResetPasswordViewModel model)
+        {
+            AppUser user = await _userManager.FindByEmailAsync(model.Email);
+            if (user != null)
+            {
+                string resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                MailMessage mail = new MailMessage();
+                mail.IsBodyHtml = true;
+                mail.To.Add(user.Email);
+                mail.From = new MailAddress("mail.nisantasi.deneme@gmail.com", "Şifre Güncelleme", System.Text.Encoding.UTF8);
+                mail.Subject = "Şifre Güncelleme Talebi";
+                mail.Body = $"<a target=\"_blank\" href=\"https://localhost:5001{Url.Action("UpdatePassword", "User", new { userId = user.Id, token = HttpUtility.UrlEncode(resetToken) })}\">Yeni şifre talebi için tıklayınız</a>";
+                mail.IsBodyHtml = true;
+                SmtpClient smp = new SmtpClient("smtp.gmail.com", 587);
+                smp.Credentials = new NetworkCredential("mail.nisantasi.deneme@gmail.com", "Fener.1023!");
+                smp.Port = 587;
+                smp.Host = "smtp.gmail.com";
+                smp.EnableSsl = true;
+                smp.Send(mail);
+
+                ViewBag.State = true;
+            }
+            else
+                ViewBag.State = false;
+
+            return View();
+        }
+        [HttpGet("[action]/{userId}/{token}")]
+        public IActionResult UpdatePassword(string userId, string token)
+        {
+            return View();
+        }
+        [HttpPost("[action]/{userId}/{token}")]
+        public async Task<IActionResult> UpdatePassword(UpdatePasswordViewModel model, string userId, string token)
+        {
+            AppUser user = await _userManager.FindByIdAsync(userId);
+            IdentityResult result = await _userManager.ResetPasswordAsync(user, HttpUtility.UrlDecode(token), model.Password);
+            if (result.Succeeded)
+            {
+                ViewBag.State = true;
+                await _userManager.UpdateSecurityStampAsync(user);
+            }
+            else
+                ViewBag.State = false;
+            return View();
+        }
+
     }
 }

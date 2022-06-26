@@ -16,6 +16,7 @@ namespace BlogProject_Emrah_Yilmaz.Controllers
         readonly ContactManager contactManager = new(new EfContactRepository());
         public IActionResult Index()
         {
+
             return View();
         }
         [HttpPost]

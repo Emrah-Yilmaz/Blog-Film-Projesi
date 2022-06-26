@@ -14,6 +14,7 @@ namespace BusinessLayer.Concrete
     {
         private readonly IGenericDal<About> _genericDal;
 
+
         public AboutManager(IGenericDal<About> genericDal)
         {
             _genericDal = genericDal;
@@ -26,7 +27,7 @@ namespace BusinessLayer.Concrete
 
         public About GetItem(int id)
         {
-            throw new NotImplementedException();
+          return   _genericDal.GetItem(x=> x.Id== 1);
         }
 
         public List<About> GetList()
@@ -56,7 +57,7 @@ namespace BusinessLayer.Concrete
 
         public void Update(About entity)
         {
-            throw new NotImplementedException();
+            _genericDal.Update(entity);
         }
     }
 }

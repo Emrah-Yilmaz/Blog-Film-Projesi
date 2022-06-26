@@ -7,12 +7,14 @@
    {
          <div class="media mt-5">
     <div class="img-circle">
-        <img src="~/Theme/BlogTema/assets/images/c3.jpg" class="mr-3 rounded-circle" alt="...">
+        <img src="~/Theme/BlogTema/assets/images/icon-account.png" class="mr-3 rounded-circle" alt="...">
     </div>
     <div class="media-body">
 
+         <a href="#"><span class="fa fa-heart-o"></span> @item.BlogScore /10</a>
         <h5 class="mt-0">@item.CommentUsername</h5>
-        <span class="time">@item.CommentDate.ToShortDateString()</span>
+        <span class="time">@item.CommentDate | </span>
+        <span class="time">@item.CommentTitle</span>
         <p>
           @item.CommentContent
         </p>

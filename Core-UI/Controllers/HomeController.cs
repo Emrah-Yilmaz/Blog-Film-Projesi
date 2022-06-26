@@ -1,4 +1,5 @@
 ﻿using Core_UI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Core_UI.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
        

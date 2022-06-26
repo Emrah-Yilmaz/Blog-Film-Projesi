@@ -1,15 +1,24 @@
-﻿<div class="testi-top mt-5 pt-3">
+﻿
+
+
+<div class="testi-top mt-5 pt-3">
     <h3 class="post-content-title">Yorum Yapın</h3>
     <div class="form-commets mt-5">
-        <form action="/Comment/PartialCommentAdd/" method="post">
+
+      
+        <form action="/Comment/PartialCommentAdd/" method="post" class="rating">
+          
             <div class="media-form">
-                 <input type="hidden" id="custId" name="BlogId" value="@ViewBag.id" readonly="readonly">
-                <input type="text" class="mb-3" name="CommentUsername"  placeholder="Ad Soyad" id="">
-                <input type="text" class="mb-3" name="CommentTitle"  placeholder="Başlık">
+                <input type="hidden" id="custId" name="BlogId" value="@ViewBag.id" readonly="readonly">
+                <input type="number" max="10" min="1" class="mb-3" name="BlogScore" placeholder="1-10 Arası Puanlayınız..." required>
+                <br />                
+                <input type="text" class="mb-3" name="CommentUsername" placeholder="Ad Soyad" id="">
+                <input type="text" class="mb-3" name="CommentTitle" placeholder="Başlık">
             </div>
+
             <textarea name="CommentContent" placeholder="Yorumunuzu buraya yazın..."></textarea>
             <div class="text-right mt-3">
-                <button class="btn read-button" type="submit" >Ekle </button>
+                <button class="btn read-button" type="submit">Ekle </button>
             </div>
 
         </form>

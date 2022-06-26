@@ -26,8 +26,8 @@ namespace BlogProject_Emrah_Yilmaz.Controllers
         {
          
             comment.CommentStatus = true;
-            comment.BlogScore = 5;
             comment.CommentDate = DateTime.Now;
+
             commentManager.AddT(comment);
 
             return RedirectToAction("SingleBlog", "Blog" , new { @id = comment.BlogId });

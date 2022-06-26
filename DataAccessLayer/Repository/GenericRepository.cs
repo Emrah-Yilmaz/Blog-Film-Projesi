@@ -23,8 +23,10 @@ namespace DataAccessLayer.Repository
         {
             using var context = new Context();
             context.Remove(entity);
-            context.SaveChanges ();
+            context.SaveChanges();
+
         }
+
 
         public List<T> GetAll()
         {
@@ -55,15 +57,13 @@ namespace DataAccessLayer.Repository
         public void Update(T entity)
         {
             using var context = new Context();
-            var updatedEntity = context.Entry(entity);
-            context.Entry(entity).State = EntityState.Modified;
-            context.SaveChanges();
-            //using var context = new Context();
-            //context.Update(entity);
+            //var updatedEntity = context.Entry(entity);
+            //context.Entry(entity).State = EntityState.Modified;
             //context.SaveChanges();
-
+            context.Update(entity);
+            context.SaveChanges();
         }
 
-       
+
     }
 }

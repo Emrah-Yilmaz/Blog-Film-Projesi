@@ -32,41 +32,37 @@
                             <div class="btom-cont btom-cont1 pt-4 mt-md-2">
                                 <h4><span class="fa fa-clock-o mr-1" aria-hidden="true"></span> @(((DateTime)item.CreateDate).ToString("dd-MM-yyyy"))</h4>
                                 <h5 class="card-title"><a href="#">@item.BlogTitle</a></h5>
-                                <ul class="admin-post">
-                                    <li>
-                                        <a href="blog-single.html"><span class="fa fa-user"></span> @item.UserID</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-single.html"><span class="fa fa-heart-o"></span> 50</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-single.html">
-                                            <span class="fa fa-comments-o"></span> 20
-                                            Comments
-                                        </a>
-                                    </li>
-                                </ul>
+
+                                @await Component.InvokeAsync("RatingAndVote", new {id = ViewBag.id })
+
+                                
+
+
+
+
                                 <p class="mb-4 mt-4">
                                     @item.BlogContent
                                 </p>
                             </div>
                         </div>
                         <blockquote class="blockquote my-5">
-									<div class="icon-quote"><span class="fa fa-quote-left" aria-hidden="true"></span>
-									</div>
-									Yönetmen 
-									<footer class="blockquote-footer mt-3">
-										@item.Director</footer>
-								</blockquote>
-                      
+                            <div class="icon-quote">
+                                <span class="fa fa-quote-left" aria-hidden="true"></span>
+                            </div>
+                            Yönetmen
+                            <footer class="blockquote-footer mt-3">
+                                @item.Director
+                            </footer>
+                        </blockquote>
+
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/@item.TrailerUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                       
+
 
                     }
 
 
                     <div class="comments mt-5">
-                        
+
 
                         @await Component.InvokeAsync("CommentListByBlog", new {id = ViewBag.id })
 

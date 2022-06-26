@@ -1,0 +1,58 @@
+﻿@model EntityLayer.Concrete.Category
+
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                                    <h1 class="alert-success text-center">@ViewBag.success</h1>
+                                    <h1 class="alert-danger text-center">@ViewBag.err</h1>
+
+                <h5>Kategori Ekleme Sayfası | <small> * Olan Alanlar Zorunludur  </small></h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#" class="dropdown-item">Config option 1</a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-item">Config option 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                @using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+                {
+                    @Html.Label("* Başlık")
+                    @Html.TextBoxFor(x => x.CategoryName, new {@class="form-control"})
+                    @Html.ValidationMessageFor(x => x.CategoryName, "", new{@class=" alert-danger"})
+
+
+                    @Html.Label("Açıklama")
+                    @Html.TextBoxFor(x => x.CategoryDescription, new {@class="form-control"})
+                    @Html.ValidationMessageFor(x => x.CategoryDescription, "", new{@class=" alert-danger"})
+
+                    <br />
+                    <button class="btn btn-outline-success" type="submit">Kategori Ekle</button>
+                }
+
+               
+
+            </div>
+        </div>
+    </div>
+</div>
+

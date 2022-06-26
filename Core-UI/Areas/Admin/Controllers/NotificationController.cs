@@ -1,5 +1,5 @@
 ﻿using BusinessLayer.Concrete;
-using DataAccessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
@@ -12,8 +12,7 @@ using System.Linq;
 namespace Core_UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
-
+    [Authorize(Roles = "Admin, Moderator")]
     public class NotificationController : Controller
     {
         private readonly NotificationManager notificationManager = new(new EfNotificationRepository());
@@ -27,6 +26,7 @@ namespace Core_UI.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult CreateNotification(Notification notification)
         {
+
 
             if (notification.NotificationType == "Etkinlik")
             {
@@ -53,9 +53,11 @@ namespace Core_UI.Areas.Admin.Controllers
                 notification.NotificationDate = DateTime.Now;
             }
             SubCategory();
-            notificationManager.AddT(notification);
-            ViewBag.message = "Bildirim Gönderme İşleminiz Başarılı Bir Şekilde Gerçekleşti";
+                notificationManager.AddT(notification);
+                ViewBag.message = "Bildirim Gönderme İşleminiz Başarılı Bir Şekilde Gerçekleşti";
+           
             return View();
+
         }
 
         private void SubCategory()
@@ -81,6 +83,6 @@ namespace Core_UI.Areas.Admin.Controllers
             notificationManager.RemoveT(result);
             return RedirectToAction("AllNotification", "Notification");
         }
-       
+
     }
 }

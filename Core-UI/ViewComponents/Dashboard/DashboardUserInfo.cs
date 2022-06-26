@@ -19,16 +19,9 @@ namespace Core_UI.ViewComponents.Dashboard
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-
-            var user = await GetCurrentUserAsync();
-
-           
-
-            var userinfos = appUserrManager.GetListSelected(x=> x.Id ==user.Id);
-
-           
-            return View(userinfos);
-
+             var user = await GetCurrentUserAsync();
+             var userinfos = appUserrManager.GetListSelected(x=> x.Id ==user.Id);
+             return View(userinfos);
         }
     }
 }

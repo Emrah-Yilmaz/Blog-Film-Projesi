@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EntityLayer.Concrete.About>
+
+@foreach (var item in Model)
+{
+    <div class="d-grid contact-addres-inf mt-5 pt-lg-4">
+        <div class="contact-info-left d-grid">
+            <div class="contact-info">
+                <div class="icon">
+                    <span class="fa fa-location-arrow" aria-hidden="true"></span>
+                </div>
+                <div class="contact-details">
+                    <h4>Adres:</h4>
+                    <p>@item.OurAddress</p>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="icon">
+                    <span class="fa fa-phone" aria-hidden="true"></span>
+                </div>
+                <div class="contact-details">
+                    <h4>Phone:</h4>
+                    <p><a href="#">@item.OurPhoneNumber</a></p>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="icon">
+                    <span class="fa fa-envelope-open-o" aria-hidden="true"></span>
+                </div>
+                <div class="contact-details">
+                    <h4>Mail:</h4>
+                    <p><a href="mailto:mail@example.com" class="email">@item.OurEmailAddress</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+     <div class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=@item.OurLocation" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+}

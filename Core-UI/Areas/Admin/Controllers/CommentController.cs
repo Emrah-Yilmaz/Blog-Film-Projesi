@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Core_UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
-
+    [Authorize(Roles = "Admin, Moderator")]
     public class CommentController : Controller
     {
         private readonly CommentManager commentManager = new(new EfCommentRepository());
