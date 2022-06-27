@@ -1,7 +1,8 @@
 # Blog-Film-Projesi
 Asp.Net Core 5 ile Rol tabanlı Film Projesi
---Bu Projede yapılanlar kısace aşağıda madde halinde sunulmuştur.
-Amacım sıkça nasıl yapılır soruları olan konulara örnek oluşturmak ve bu konuda araştırma yapanlara katkı sunmaktır.
+<br/>Bu Projede yapılanlar kısaca aşağıda madde halinde sunulmuştur.
+<br/>
+Amacım sıkça nasıl yapılır soruları olan konulara örnek oluşturmak ve bu konuda araştırma yapanlara kaynak oluşturabilmektir.
 
 1-Asp.Net Core N katmanlı mimari ile tasarlanmıştır.
 <br/>
