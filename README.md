@@ -15,4 +15,5 @@ Amacım sıkça nasıl yapılır soruları olan konulara örnek oluşturmak ve b
 10-Yazar ve Admin Panelinde İstatistik verileri hazırlanmıştır.
 
 Blog Arayüzüne ait görüntüler : https://youtu.be/BH8HfN9V-eE
+<br/>
 Kullanıcı ve Admin Paneline Ait görüntüler : https://youtu.be/WIL70JKeo_Q
