@@ -13,3 +13,6 @@ Amacım sıkça nasıl yapılır soruları olan konulara örnek oluşturmak ve b
 8-Area ile Admin Paneli ayrılmıştır.
 9-Bloglara bağlı oylama, yorum yapma gibi işlemler TRIGGER ile yazılmıştır.
 10-Yazar ve Admin Panelinde İstatistik verileri hazırlanmıştır.
+
+Blog Arayüzüne ait görüntüler : https://youtu.be/BH8HfN9V-eE
+Kullanıcı ve Admin Paneline Ait görüntüler : https://youtu.be/WIL70JKeo_Q
