@@ -1,5 +1,5 @@
 # Blog-Film-Projesi
-Asp.Net Core 5 ile Rol tabanlı Film Projesi
+Asp.Net Core 5 ile N Katmanlı Rol tabanlı Blog/Film Projesi
 <br/>Bu Projede yapılanlar kısaca aşağıda madde halinde sunulmuştur.
 <br/>
 Amacım sıkça nasıl yapılır soruları olan konulara örnek oluşturmak ve bu konuda araştırma yapanlara kaynak oluşturabilmektir.
