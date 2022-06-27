@@ -81,7 +81,6 @@ namespace Core_UI.Controllers
                 if (result.Succeeded)
                 {
                     HttpContext.Session.SetString("Username", userSignInViewModel.Username);
-
                     return RedirectToAction("Index", "Dashboard");
                 }
                 else
@@ -96,7 +95,7 @@ namespace Core_UI.Controllers
         {
             await _signInManager.SignOutAsync();
         }
-        [Authorize(Roles = "Admin, Moderator, Writer")]
+
         public async Task<IActionResult> UserEditProfile()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -108,8 +107,8 @@ namespace Core_UI.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin, Moderator, Writer")]
         [HttpPost]
+
         public async Task<IActionResult> UserEditProfile(UserUpdateViewModel model)
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -118,10 +117,10 @@ namespace Core_UI.Controllers
             values.NameSurname = model.NameSurname;
             values.ImageUrl = model.ImageUrl;
             values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, model.Password);
-            var result = await _userManager.UpdateAsync(values);
+            await _userManager.UpdateAsync(values);
+            ViewBag.success = "Bilgileriniz Başarılı bir şekilde güncellendi.";
 
-
-            return RedirectToAction("Index", "Dashboard");
+            return View();
         }
         public IActionResult AccessDenied()
         {
@@ -139,15 +138,15 @@ namespace Core_UI.Controllers
             {
                 string resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-                MailMessage mail = new MailMessage();
+                MailMessage mail = new ();
                 mail.IsBodyHtml = true;
                 mail.To.Add(user.Email);
                 mail.From = new MailAddress("mail.nisantasi.deneme@gmail.com", "Şifre Güncelleme", System.Text.Encoding.UTF8);
                 mail.Subject = "Şifre Güncelleme Talebi";
                 mail.Body = $"<a target=\"_blank\" href=\"https://localhost:5001{Url.Action("UpdatePassword", "User", new { userId = user.Id, token = HttpUtility.UrlEncode(resetToken) })}\">Yeni şifre talebi için tıklayınız</a>";
                 mail.IsBodyHtml = true;
-                SmtpClient smp = new SmtpClient("smtp.gmail.com", 587);
-                smp.Credentials = new NetworkCredential("mail.nisantasi.deneme@gmail.com", "Fener.1023!");
+                SmtpClient smp = new("smtp.gmail.com", 587);
+                smp.Credentials = new NetworkCredential("mail adresi", "mail sifresi");
                 smp.Port = 587;
                 smp.Host = "smtp.gmail.com";
                 smp.EnableSsl = true;
@@ -161,7 +160,7 @@ namespace Core_UI.Controllers
             return View();
         }
         [HttpGet("[action]/{userId}/{token}")]
-        public IActionResult UpdatePassword(string userId, string token)
+        public IActionResult UpdatePassword()
         {
             return View();
         }
