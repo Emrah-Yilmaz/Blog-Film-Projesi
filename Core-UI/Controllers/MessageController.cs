@@ -123,7 +123,7 @@ namespace Core_UI.Controllers
             message.MessageDate = DateTime.Now;
             message.MessageStatus = true;
             message.ReceiverUsername = deneme.ToString();
-
+            ViewBag.success = "Mesajınız Başarıyla Gönderildi.";
             messages.AddT(message);
 
             return View();

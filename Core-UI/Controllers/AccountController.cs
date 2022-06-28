@@ -36,7 +36,7 @@ namespace Core_UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(UserSignUpViewModel userSignUpViewModel)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 AppUser user = new()
                 {
@@ -44,6 +44,7 @@ namespace Core_UI.Controllers
                     Email = userSignUpViewModel.MailAdress,
                     UserName = userSignUpViewModel.Username,
                     NameSurname = userSignUpViewModel.NameSurname,
+                    CreateData = DateTime.Now,
                     
                     ImageUrl = "/Theme/writer/assets/images/faces/icon-account.png"
 
@@ -146,7 +147,7 @@ namespace Core_UI.Controllers
                 mail.Body = $"<a target=\"_blank\" href=\"https://localhost:5001{Url.Action("UpdatePassword", "User", new { userId = user.Id, token = HttpUtility.UrlEncode(resetToken) })}\">Yeni şifre talebi için tıklayınız</a>";
                 mail.IsBodyHtml = true;
                 SmtpClient smp = new("smtp.gmail.com", 587);
-                smp.Credentials = new NetworkCredential("mail adresi", "mail sifresi");
+                smp.Credentials = new NetworkCredential("mail.nisantasi.deneme@gmail.com", "Fnr.ylmz.1907!");
                 smp.Port = 587;
                 smp.Host = "smtp.gmail.com";
                 smp.EnableSsl = true;
